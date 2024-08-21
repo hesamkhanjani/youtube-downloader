@@ -2,7 +2,8 @@ import express from "express"
 import bodyParser from "body-parser"
 const app = express()
 const PORT = process.env.PORT || 1000
-
+ 
+// test
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.set("views" , "./view")
