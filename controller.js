@@ -9,7 +9,9 @@ app.get('/' , (req,res)=>{
 
     res.render("index" , {message: "hello every one"})
 })
-
+app.post('/post' , (req,res)=>{
+    console.log(req.query)
+})
 
 
 
