@@ -7,13 +7,13 @@ app.set("view engine" , "ejs")
 
 app.get('/' , (req,res)=>{
 
-    res.
+    res.render("index" , {message: "hello every one"})
 })
 
 
 
 
-app.listen(PORT , ()=> {console.log(`app run on ${PORT}.`)})
+app.listen(PORT , ()=> { console.log(`app run on ${PORT}.`) })
 
 
 
