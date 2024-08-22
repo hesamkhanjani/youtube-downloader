@@ -1,5 +1,7 @@
 import express from "express"
 import bodyParser from "body-parser"
+import amqp from "amqplib/callback_api.js"
+import { setFips } from "crypto"
 const app = express()
 const PORT = process.env.PORT || 1000
  
@@ -13,13 +15,33 @@ app.set("view engine" , "ejs")
 app.get('/' , (req,res)=>{
 
     res.render("index" , {message: "hello every one"})
+    res.end()
 })
 
 
-app.post('/post' , (req,res)=>{
-    console.log(req.body)
+app.post('/' , (req,res)=>{
+    sendUrl(req.body.sended_url)
+    res.redirect('/')
+    res.end()
 })
 
+function sendUrl(url){
+    amqp.connect('amqp://localhost' , (err , connection)=>{
+        if (err){ throw err}
+        connection.createChannel((err , channel)=>{
+            if(err){throw err}
+            const queue = 'giveLink'
+
+            channel.assertQueue(queue , {
+                durable: false
+            })
+            channel.sendToQueue(queue , Buffer.from(url))
+        })
+        setTimeout(()=>{ 
+            connection.close();
+         } , 500)
+    })
+}
 
 
 app.listen(PORT , ()=> { console.log(`app run on ${PORT}.`) })
