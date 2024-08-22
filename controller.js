@@ -1,7 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
 import amqp from "amqplib/callback_api.js"
-import { setFips } from "crypto"
 const app = express()
 const PORT = process.env.PORT || 1000
  
