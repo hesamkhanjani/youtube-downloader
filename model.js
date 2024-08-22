@@ -13,6 +13,9 @@ amqp.connect('amqp://localhost' , (err , connection)=>{
         })
         channel.consume(queue , (msg)=>{
             console.log(msg.content.toString())
+
+
+            
         },{
             noAck: true
         })
