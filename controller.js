@@ -1,19 +1,18 @@
 import express from "express"
 import bodyParser from "body-parser"
 import amqp from "amqplib/callback_api.js"
+
 const app = express()
 const PORT = process.env.PORT || 1000
  
-// test
 app.use(bodyParser.urlencoded({extended: true}))
-
 app.set("views" , "./view")
 app.set("view engine" , "ejs")
 
 
 app.get('/' , (req,res)=>{
 
-    res.render("index" , {message: "hello every one"})
+    res.render("index" , {message: "Give me url video page"})
     res.end()
 })
 
