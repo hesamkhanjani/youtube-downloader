@@ -8,11 +8,11 @@ const PORT = process.env.PORT || 1000
 app.use(bodyParser.urlencoded({extended: true}))
 app.set("views" , "./view")
 app.set("view engine" , "ejs")
-
+app.use(express.static('public'))
 
 app.get('/' , (req,res)=>{
 
-    res.render("index" , {message: "Give me url video page"})
+    res.render("index" , {message: "Give me url video page" , title: "YouTube_Downloader"})
     res.end()
 })
 
