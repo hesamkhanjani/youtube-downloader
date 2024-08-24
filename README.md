@@ -12,7 +12,7 @@ give link page of video and this app downloaded video.
 rabbitmq start
 node controller.js
 node model.js
-py downloader
+py downloader.py
 
 ```
 
