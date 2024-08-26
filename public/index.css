@@ -57,3 +57,7 @@ body {
 .send:hover {
     background-color: rgb(132, 0, 0); 
 }
+.box-q{
+   color: red;
+   margin: 0 auto 0  0;
+}
