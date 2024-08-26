@@ -3,6 +3,44 @@ import amqp from 'amqplib/callback_api.js'
 
 
 
+function checkQuality(str){
+    var list = []
+    var comList = []
+    var redStr = ''
+    var qual = ''
+
+    list = str.split("#@#") 
+
+    switch (list[1].toString()){
+
+        case "1080":
+            qual = '137'
+            break;
+        case "720":
+            qual = '136'
+            break;
+        case "480":
+            qual = '135'
+            break;
+        case "360":
+            qual = '134'
+            break;
+
+        case "240":
+            qual = '133'
+            break;
+
+        case "144":
+            qual = '160'
+            break;
+    }
+
+    comList.push(list[0])
+    comList.push(qual)
+    redStr = comList.join('#@#')
+
+    sendToDownloader(redStr)
+}
 
 function sendToDownloader(url){
 
@@ -38,7 +76,8 @@ amqp.connect('amqp://localhost' , (err , connection)=>{
             durable: false
         })
         channel.consume(queue , (msg)=>{
-            sendToDownloader(msg.content.toString())
+           
+            checkQuality(msg.content.toString())
 
 
             

@@ -1,8 +1,26 @@
 import yt_dlp as ydl
 import pika
 
-def download(url):
+
+
+
+def preparer(string):
+    url = ""
+    qual = ""
+    lIst = []
+    
+    lIst = string.split("#@#")
+    url = lIst[0]
+    qual = lIst[1]
+    
+    download(url , qual)
+    
+    
+def download(url , qual):
+    
+    
     ydl_opts = {
+            'format': qual ,
             'outtmpl': 'video.mp4',  
         }
     ydl.YoutubeDL(ydl_opts).download([url])  
@@ -22,8 +40,8 @@ def main():
         
 
         video_url = body.decode()
-        download(video_url)
-
+        preparer(video_url)
+        
         
 
     channel.basic_consume(

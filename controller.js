@@ -18,12 +18,19 @@ app.get('/' , (req,res)=>{
 
 
 app.post('/' , (req,res)=>{
-    sendUrl(req.body.sended_url)
+    sendUrl(req.body.sended_url , req.body.box_quality)
     res.redirect('/')
     res.end()
 })
 
-function sendUrl(url){
+function sendUrl(url , qual){
+    var list = []
+    var strList = ''
+
+    list.push(url)
+    list.push(qual)
+    strList = list.join("#@#")
+
     amqp.connect('amqp://localhost' , (err , connection)=>{
         if (err){ throw err}
         connection.createChannel((err , channel)=>{
@@ -33,7 +40,7 @@ function sendUrl(url){
             channel.assertQueue(queue , {
                 durable: false
             })
-            channel.sendToQueue(queue , Buffer.from(url))
+            channel.sendToQueue(queue , Buffer.from(strList))
         })
         setTimeout(()=>{ 
             connection.close();
