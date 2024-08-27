@@ -60,4 +60,14 @@ body {
 .box-q{
    color: red;
    margin: 0 auto 0  0;
+   
+}
+.audio-q{
+    color: red;
+   margin: 0 auto 0  0;
+   display: none;
+}
+.check_box{
+    margin: 0 0 0 auto ;
+    color: rgb(119, 159, 0)
 }

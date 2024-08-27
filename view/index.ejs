@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="wigth=device-wight , initial-scale=1.0"/>
-    <link rel="stylesheet" href="/index.css">
-    <title class="title"><%= title %></title>
-</head>
-
-<body>
-
-<div class="box">
-    <h1 class="head"><%= message %></h1>
-
-   <form class="form" action="/" method="post">
-        <input class="input_url" type="url" name="sended_url" required placeholder="https://www.youtube.com/watch?v=VIDEO_ID">
         
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="wigth=device-wight , initial-scale=1.0"/>
+        <link rel="stylesheet" href="/index.css">
+        <title class="title"><%= title %></title>
+    </head>
 
-        <select name="box_quality" class="box-q">
-            <option value="1080">1080p</option>
-            <option value="720">720p</option>
-            <option value="480">480p</option>
-            <option value="360">360p</option>
-            <option value="240">240p</option>
-            <option value="144">144p</option>
+    <body>
+        <script>
 
-        </select>
+            function audioCheckBox(){
 
+                var worker1 = document.getElementById("video_q") 
+                var worker2 = document.getElementById("audio_q")
 
+                worker2.style.display = "block"
+                worker1.style.display = "none"
+            }
+            function videoCheckBox(){
 
+                var worker1 = document.getElementById("video_q") 
+                var worker2 = document.getElementById("audio_q")
 
-        <input class="send" type="submit" value="Send" >
+                worker1.style.display = "block";
+                worker2.style.display = "none";
+            }
+        </script>
 
-   </form>
+        <div class="box">
 
-</div>
-</body>
+            <h1 class="head"><%= message %></h1>
+
+            <form class="form" action="/" method="post">
+
+                    <input class="input_url" type="url" name="sended_url" required placeholder="https://www.youtube.com/watch?v=VIDEO_ID">
+                    
+                    <select name="box_quality" class="box-q" id="video_q">
+                        <option value="1080">1080p</option>
+                        <option value="720">720p</option>
+                        <option value="480">480p</option>
+                        <option value="360">360p</option>
+                        <option value="240">240p</option>
+                        <option value="144">144p</option>
+                    </select>
+
+                    <select name="box_quality" class="audio-q" id="audio_q">
+                        <option value="140">256k</option>
+                        <option value="139">128k</option>
+                    </select>
+
+                    <label class="check_box">
+                        Video
+                        <input type="radio" name="opt" onclick="videoCheckBox()" checked>
+                    </label>
+
+                    <label class="check_box">
+                        Audio
+                        <input type="radio" name="opt" onclick="audioCheckBox()">
+                    </label><br>
+                
+                    <input class="send" type="submit" value="Send" >
+            </form>
+        </div>
+    </body>
 
 </html>
