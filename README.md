@@ -13,7 +13,7 @@ download youtube video with special quality!
 
 ## start app:
 
-> should set environment variables for ffmpeg (in windows in path(environment variables))
+> should set environment variables for ffmpeg , RabbitMQ (in windows in path(environment variables))
 
 ```
 rabbitmq start
