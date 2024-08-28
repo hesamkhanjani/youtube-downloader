@@ -18,12 +18,20 @@ app.get('/' , (req,res)=>{
 
 
 app.post('/' , (req,res)=>{
-    sendUrl(req.body.sended_url , req.body.box_quality)
+
+    if(req.body.opt == "opt_video"){
+            sendUrl(req.body.sended_url , req.body.box_quality)
+    }
+    if(req.body.opt == "opt_audio"){
+        sendUrl(req.body.sended_url , req.body.box_quality_audio)
+    }
+   
     res.redirect('/')
     res.end()
 })
 
 function sendUrl(url , qual){
+    
     var list = []
     var strList = ''
 

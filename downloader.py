@@ -2,8 +2,6 @@ import yt_dlp as ydl
 import pika
 
 
-
-
 def preparer(string):
     url = ""
     qual = ""
@@ -18,14 +16,30 @@ def preparer(string):
     
 def download(url , qual):
     
-    
-    ydl_opts = {
+    ydl_opts = {}
+    print(qual)
+    if qual == "140" or qual == "139":
+        ydl_opts = {
             'format': qual ,
-            'outtmpl': 'video.mp4',  
+            'outtmpl': 'audio.mp3',  
         }
+    else:
+        if qual == "137" or qual == "136" or qual == "135":
+            ydl_opts = {
+                'format': f'{qual}+140' ,
+                'outtmpl': 'video.mp4',  
+                'merge_output_format': 'mp4',
+            }
+            
+        else:
+            ydl_opts = {
+                'format': f'{qual}+139' ,
+                'outtmpl': 'video.mp4',  
+                'merge_output_format': 'mp4',
+            }
+    
+    
     ydl.YoutubeDL(ydl_opts).download([url])  
-            
-            
             
 def main():
     connection = pika.BlockingConnection(

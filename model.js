@@ -33,6 +33,14 @@ function checkQuality(str){
         case "144":
             qual = '160'
             break;
+
+        case "256":
+            qual = "140"
+            break;
+
+        case "128":
+            qual = "139"
+            break;
     }
 
     comList.push(list[0])
