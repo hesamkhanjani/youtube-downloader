@@ -46,19 +46,19 @@
                         <option value="144">144p</option>
                     </select>
 
-                    <select name="box_quality" class="audio-q" id="audio_q">
-                        <option value="140">256k</option>
-                        <option value="139">128k</option>
+                    <select name="box_quality_audio" class="audio-q" id="audio_q">
+                        <option value="256">256k</option>
+                        <option value="128">128k</option>
                     </select>
 
                     <label class="check_box">
                         Video
-                        <input type="radio" name="opt" onclick="videoCheckBox()" checked>
+                        <input type="radio" name="opt" onclick="videoCheckBox()" value="opt_video" checked>
                     </label>
 
                     <label class="check_box">
                         Audio
-                        <input type="radio" name="opt" onclick="audioCheckBox()">
+                        <input type="radio" name="opt" onclick="audioCheckBox()" value="opt_audio">
                     </label><br>
                 
                     <input class="send" type="submit" value="Send" >
